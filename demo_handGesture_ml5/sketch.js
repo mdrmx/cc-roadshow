@@ -235,7 +235,7 @@ class HarpString {
     if (!this.vibrating) return;
     // Phase speed scales with pitch so higher strings oscillate faster
     this.vibPhase += map(this.freq, 220, 659, 0.12, 0.3);
-    this.vibAmp *= 0.965; // exponential decay — faster decay = higher tension
+    this.vibAmp *= 0.799; // exponential decay — faster decay = higher tension
     if (this.vibAmp < 0.3) {
       this.vibrating = false;
       this.vibAmp = 0;
@@ -278,7 +278,7 @@ class HarpString {
   // Draws the string shape — straight when at rest, wavy when vibrating.
   // Uses a two-harmonic standing wave fixed at both endpoints.
   _wavePath() {
-    const SEGS = 50;
+    const SEGS = 250;
     beginShape();
     for (let i = 0; i <= SEGS; i++) {
       const t = i / SEGS;
