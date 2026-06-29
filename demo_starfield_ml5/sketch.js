@@ -91,6 +91,12 @@ function draw() {
 
   background(5, 8, 25);
 
+  push();
+
+  translate(width, 0);
+  // Scale -1 in the x-axis to flip the image horizontally
+  scale(-1, 1);
+
   // --- Reset per-frame state (typed array .fill is fast) ---
   activeFlag.fill(0);
   kpToStarMaps.fill(-1);
@@ -161,8 +167,9 @@ function draw() {
       image(glowSprite, starX[i] - r, starY[i] - r, diameter, diameter);
     }
   }
+  pop();
 }
-``;
+
 function gotPoses(results) {
   poses = results;
 }

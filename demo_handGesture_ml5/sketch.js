@@ -282,14 +282,14 @@ class HarpString {
     beginShape();
     for (let i = 0; i <= SEGS; i++) {
       const t = i / SEGS;
-      const y = lerp(STRING_TOP, STRING_BOTTOM, t);
+      const y = lerp(STRING_TOP, STRING_BOTTOM, t); // linear interpolation along the string for the effect of the wave
 
       // Fundamental: sin(πt) envelope × cos(phase)  — zero at both ends
       const h1 = sin(PI * t) * cos(this.vibPhase);
       // Second harmonic (smaller amplitude)
       const h2 = sin(2 * PI * t) * cos(2 * this.vibPhase + 0.4);
 
-      const xOff = this.vibAmp * (h1 + 0.25 * h2);
+      const xOff = this.vibAmp * (h1 + 0.25 * h2); // combine harmonics
       vertex(this.x + xOff, y);
     }
     endShape();
